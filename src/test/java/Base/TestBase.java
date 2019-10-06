@@ -53,8 +53,8 @@ public class TestBase {
             ChromeOptions options = new ChromeOptions();
             options.addArguments("test-type");
             options.addArguments("--disable-infobars");
-            options.addArguments("--incognito");
-            //options.addArguments("--headless");
+            //options.addArguments("--incognito");
+            options.addArguments("--headless");
             options.addArguments("--disable-extensions");
             options.addArguments("--disable-gpu");
             //options.setAcceptInsecureCerts(true);

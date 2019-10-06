@@ -3,10 +3,13 @@ package ObjectRepo;
 import Base.TestBase;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class ContactsPage extends TestBase {
 
@@ -22,13 +25,7 @@ public class ContactsPage extends TestBase {
     @FindBy(how = How.NAME, using = "last_name")
     public WebElement lastName;
 
-    @FindBy(how = How.XPATH, using = "//div[@name='company']//input[@class='search']")
-    public WebElement company;
-
-    @FindBy(how = How.XPATH, using = "//div[@class='ui right corner labeled input']//input[@name='value']")
-    public WebElement mail;
-
-    @FindBy(how = How.XPATH, using = "//button[@class='ui linkedin button']")
+    @FindBy(how = How.CSS, using = "i.save")
     public WebElement saveBtn;
 
     @FindBy(how = How.XPATH, using = "//td[contains(text(),'Sharon Shelton')]")
@@ -45,19 +42,39 @@ public class ContactsPage extends TestBase {
     }
 
     public void selectContactsByName(String name){
+
         driver.findElement(By.xpath("//td[contains(text(),'"+name+"')] ")).click();
+
     }
 
-    public void createNewContacts(String ftName, String ltName, String comp, String email) {
+    public void createNewContacts(String ftName, String ltName) throws InterruptedException {
         /*Select select = new Select(driver.findElement(By.name("title")));
         select.selectByVisibleText(ftName);*/
 
         firstName.sendKeys(ftName);
         lastName.sendKeys(ltName);
-        company.sendKeys(comp);
-        mail.sendKeys(email);
-
+        saveBtn.sendKeys();
         saveBtn.click();
+
+        /*Actions actions = new Actions(driver);
+        actions.moveToElement(firstName);
+        actions.sendKeys(ftName);
+        actions.build().perform();*/
+
+        /*Actions actions = new Actions(driver);
+        actions.moveToElement(saveBtn);
+        actions.click();
+        actions.build().perform();*/
+
+        /*Actions actions = new Actions(driver);
+        actions.moveToElement(driver.findElement(By.name("first_name")));
+        actions.click();
+        actions.sendKeys(ftName);
+        actions.build().perform();*/
+
+        /*WebDriverWait wait = new WebDriverWait(driver, 5);
+        wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(By.cssSelector("i.save"))));
+        actions.moveToElement(driver.findElement(By.cssSelector("i.save")));*/
 
     }
 
@@ -66,5 +83,4 @@ public class ContactsPage extends TestBase {
         action.moveToElement(newContactsLnk).build().perform();*/
         newContactsLnk.click();
     }
-
 }

@@ -7,7 +7,9 @@
     </listeners>
     <test name="TestNGFramework">
         <classes>
+            <class name="TestCases.LoginPageTest"></class>
             <class name="TestCases.HomePageTest"></class>
+            <class name="TestCases.ContactsPageTest"></class>
         </classes>
     </test>
 </suite>

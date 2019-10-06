@@ -15,7 +15,7 @@ public class LoginPage extends TestBase{
     @FindBy(how=How.NAME,using="password")
     public WebElement txtPassword;
 
-    @FindBy(how=How.XPATH,using="//div[@class='ui fluid large blue submit button']")
+    @FindBy(how=How.CSS,using="div.ui.fluid.large.blue.submit.button")
     public WebElement btnLogin;
 
     @FindBy(how=How.LINK_TEXT,using="Sign Up")
@@ -47,7 +47,7 @@ public class LoginPage extends TestBase{
 
     public HomePage ClickLogin()
     {
-        btnLogin.submit();
+        btnLogin.click();
         return new HomePage();
     }
 

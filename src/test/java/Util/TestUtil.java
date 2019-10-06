@@ -46,8 +46,7 @@ public class TestUtil extends TestBase {
     }
 
 
-    public static String TESTDATA_SHEET_PATH = "C:\\Users\\Olomu\\Desktop\\Work\\Idea\\TestNGFramework" +
-            "\\src\\test\\java\\TestData\\FreeCrmTestData.xlsx";
+    public static String TESTDATA_SHEET_PATH = "C:\\Users\\Olomu\\IdeaProjects\\TestNGFramework\\src\\test\\java\\TestData\\FreeCrmTestData.xlsx";
 
     static Workbook book;
     static Sheet sheet;

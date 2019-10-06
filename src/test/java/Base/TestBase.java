@@ -2,14 +2,21 @@ package Base;
 
 import Util.TestUtil;
 import Util.WebEventListener;
+import org.openqa.selenium.Platform;
+import org.openqa.selenium.UnexpectedAlertBehaviour;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.remote.CapabilityType;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.events.EventFiringWebDriver;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.net.URL;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
@@ -36,10 +43,27 @@ public class TestBase {
     public static void initialization() {
         String browserName = prop.getProperty("browser");
 
+        String chromeDriverPath = prop.getProperty("Path");
+
         if (browserName.equals("chrome")) {
 
-            System.setProperty("webdriver.chrome.driver", "C:\\Tundes World\\Automation\\Drivers\\chromedriver.exe");
-            driver = new ChromeDriver();
+            System.setProperty("webdriver.chrome.driver", chromeDriverPath);
+
+
+            ChromeOptions options = new ChromeOptions();
+            options.addArguments("test-type");
+            options.addArguments("--disable-infobars");
+            options.addArguments("--incognito");
+            //options.addArguments("--headless");
+            options.addArguments("--disable-gpu");
+            //options.setAcceptInsecureCerts(true);
+            options.setUnhandledPromptBehaviour(UnexpectedAlertBehaviour.ACCEPT);
+            driver = new ChromeDriver(options);
+
+            /*DesiredCapabilities capabilities = DesiredCapabilities.chrome();
+            capabilities.setCapability("chrome.binary", "<Path to binary>");
+            capabilities.setCapability(ChromeOptions.CAPABILITY, options);
+            driver = new ChromeDriver(capabilities);*/
 
         } else if (browserName.equals("FF")) {
             System.setProperty("webdriver.gecko.driver", "C:\\Tundes World\\Automation\\Drivers\\geckodriver.exe");
@@ -56,7 +80,6 @@ public class TestBase {
         driver.manage().window().maximize();
         driver.manage().timeouts().pageLoadTimeout(TestUtil.PAGE_LOAD_TIMEOUT, TimeUnit.SECONDS);
         driver.manage().timeouts().implicitlyWait(TestUtil.IMPLICIT_WAIT, TimeUnit.SECONDS);
-
         driver.get(prop.getProperty("LoginURL"));
 
         }

@@ -33,7 +33,7 @@ public class LoginPageTest extends TestBase {
     @Test(priority = 1)
     public void verifyLoginPageTitleTest() {
         String title = loginPage.validateLoginPageTitle();
-        Assert.assertEquals(title, "CRM");
+        Assert.assertEquals(title, "Cogmento CRM");
 
         boolean flag = loginPage.validateLoginPageLogo();
         Assert.assertTrue(flag);

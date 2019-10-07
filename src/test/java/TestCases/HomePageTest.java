@@ -37,7 +37,7 @@ public class HomePageTest extends TestBase {
         loginPage.login(prop.getProperty("Email"), prop.getProperty("Password"));
         homePage = loginPage.ClickLogin();
         String homePageTitle = homePage.verifyHomePageTitle();
-        Assert.assertEquals(homePageTitle, "CRM", "Home page title not matched");
+        Assert.assertEquals(homePageTitle, "Cogmento CRM", "Home page title not matched");
     }
 
     @Test(priority=2)

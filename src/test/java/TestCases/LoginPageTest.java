@@ -4,6 +4,7 @@ import ObjectRepo.HomePage;
 import ObjectRepo.LoginPage;
 import Base.TestBase;
 import Util.TestUtil;
+import org.apache.log4j.Logger;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -14,6 +15,9 @@ import java.io.IOException;
 import static sun.management.snmp.AdaptorBootstrap.initialize;
 
 public class LoginPageTest extends TestBase {
+
+
+    private final Logger logger = Logger.getLogger(LoginPageTest.class.getName());
     LoginPage loginPage;
     HomePage homePage;
     TestUtil testUtil;
@@ -23,7 +27,7 @@ public class LoginPageTest extends TestBase {
     }
 
     @BeforeMethod
-    public void setUp() throws IOException{
+    public void setUp() throws IOException {
         //testBase = new TestBase
         initialization();
         testUtil = new TestUtil();

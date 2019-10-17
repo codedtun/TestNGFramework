@@ -1,6 +1,8 @@
 package ObjectRepo;
 
 import Base.TestBase;
+import TestCases.LoginPageTest;
+import org.apache.log4j.Logger;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
@@ -8,6 +10,7 @@ import org.openqa.selenium.support.PageFactory;
 
 
 public class LoginPage extends TestBase{
+    private final Logger logger = Logger.getLogger(LoginPageTest.class.getName());
 
     @FindBy(how=How.NAME,using="email")
     public WebElement txtEmail;

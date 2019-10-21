@@ -53,8 +53,9 @@ public class ContactsPage extends TestBase {
 
         firstName.sendKeys(ftName);
         lastName.sendKeys(ltName);
-        saveBtn.sendKeys();
-        saveBtn.click();
+        new WebDriverWait(driver, 10).until(ExpectedConditions.elementToBeClickable(By.cssSelector("i.save"))).click();
+        //saveBtn.sendKeys();
+        //saveBtn.click();
 
         /*Actions actions = new Actions(driver);
         actions.moveToElement(firstName);

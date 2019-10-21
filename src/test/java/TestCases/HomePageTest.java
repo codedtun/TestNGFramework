@@ -42,15 +42,19 @@ public class HomePageTest extends TestBase {
 
     @Test(priority=2)
     public void verifyUserNameTest() throws InterruptedException {
+        loginPage.login(prop.getProperty("Email"), prop.getProperty("Password"));
+        homePage = loginPage.ClickLogin();
         Thread.sleep(1000l);
-        testUtil.switchToFrame();
-        Assert.assertTrue(homePage.verifyCorrectUserName());
+        //testUtil.switchToFrame();
+        Assert.assertEquals(homePage.verifyCorrectUserName(), "Auto Tester", "UserName not matched");
     }
 
     @Test(priority=3)
     public void verifyContactsLinkTest() throws InterruptedException {
+        loginPage.login(prop.getProperty("Email"), prop.getProperty("Password"));
+        homePage = loginPage.ClickLogin();
         Thread.sleep(1000l);
-        testUtil.switchToFrame();
+        //testUtil.switchToFrame();
         contactsPage = homePage.clickOnContactsLink();
     }
 

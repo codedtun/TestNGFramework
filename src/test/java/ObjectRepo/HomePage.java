@@ -35,8 +35,8 @@ public class HomePage extends TestBase {
     }
 
     //Actions
-    public boolean verifyCorrectUserName(){
-        return userNameLabel.isDisplayed();
+    public String verifyCorrectUserName(){
+        return userNameLabel.getText();
     }
 
     public String verifyHomePageTitle() {
